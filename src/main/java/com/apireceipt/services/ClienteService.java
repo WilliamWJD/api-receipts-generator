@@ -39,4 +39,10 @@ public class ClienteService {
 			throw new DataIntegrityException("Não é possível excluir um cliente que possui recibos");
 		}
 	}
+	
+	public Cliente update(Cliente cliente) {
+		find(cliente.getId());
+		return clienteRepository.save(cliente);
+		
+	}
 }
