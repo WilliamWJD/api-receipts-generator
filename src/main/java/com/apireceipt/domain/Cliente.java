@@ -1,13 +1,16 @@
 package com.apireceipt.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.apireceipt.domain.enums.EstadoCivil;
@@ -28,6 +31,9 @@ public class Cliente implements Serializable{
 	private String genero;
 	private String email;
 	private Integer estadoCivil;
+	
+	@OneToMany(mappedBy = "cliente")
+	private List<Recibo> recibos = new ArrayList<>();
 	
 	public Cliente() {
 	}
@@ -116,6 +122,14 @@ public class Cliente implements Serializable{
 
 	public void setEstadoCivil(EstadoCivil estadoCivil) {
 		this.estadoCivil = estadoCivil.getCod();
+	}
+	
+	public List<Recibo> getRecibos() {
+		return recibos;
+	}
+
+	public void setRecibos(List<Recibo> recibos) {
+		this.recibos = recibos;
 	}
 
 	@Override
