@@ -38,4 +38,10 @@ public class ClienteResource {
 		return ResponseEntity.ok().body(clientes);
 	}
 	
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<Void> delete(@PathVariable Integer id){
+		clienteService.delete(id);
+		return ResponseEntity.noContent().build();
+	}
+	
 }
