@@ -1,5 +1,7 @@
 package com.apireceipt.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,5 +15,10 @@ public class ClienteService {
 	
 	public Cliente insert(Cliente obj) {
 		return clienteRepository.save(obj);
+	}
+	
+	public List<Cliente> findAll(){
+		List<Cliente> clientes = clienteRepository.findAll();
+		return clientes;
 	}
 }
