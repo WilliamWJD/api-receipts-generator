@@ -2,6 +2,8 @@ package com.apireceipt.resources;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,7 +23,7 @@ public class ClienteResource {
 	private ClienteService clienteService;
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<Void> insert(@RequestBody Cliente cliente){
+	public ResponseEntity<Void> insert(@Valid @RequestBody Cliente cliente){
 		cliente = clienteService.insert(cliente);
 		return ResponseEntity.ok().build();
 	}
@@ -45,7 +47,7 @@ public class ClienteResource {
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Void> delete(@PathVariable Integer id ,@RequestBody Cliente cliente){
+	public ResponseEntity<Void> update(@PathVariable Integer id ,@RequestBody Cliente cliente){
 		cliente.setId(id);
 		clienteService.update(cliente);
 		return ResponseEntity.noContent().build();

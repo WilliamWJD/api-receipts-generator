@@ -28,9 +28,6 @@ public class Recibo implements Serializable{
 	private String cep;
 	private Integer enderecoNum;
 	
-	@Transient
-	private Integer cliente_id;
-	
 	@ManyToOne
 	@JsonIgnore
 	@JoinColumn(name = "cliente_id")
@@ -39,7 +36,7 @@ public class Recibo implements Serializable{
 	public Recibo() {
 	}
 
-	public Recibo(Integer id, Integer numeroRecibo, Double valor, String descricao, String cep, Integer enderecoNum, Cliente cliente, Integer cliente_id) {
+	public Recibo(Integer id, Integer numeroRecibo, Double valor, String descricao, String cep, Integer enderecoNum, Cliente cliente) {
 		super();
 		this.id = id;
 		this.numeroRecibo = numeroRecibo;
@@ -48,7 +45,6 @@ public class Recibo implements Serializable{
 		this.cep = cep;
 		this.enderecoNum = enderecoNum;
 		this.cliente = cliente;
-		this.cliente_id = cliente_id;
 	}
 
 	public Integer getId() {
@@ -105,14 +101,6 @@ public class Recibo implements Serializable{
 
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
-	}
-
-	public Integer getCliente_id() {
-		return cliente_id;
-	}
-
-	public void setCliente_id(Integer cliente_id) {
-		this.cliente_id = cliente_id;
 	}
 
 	@Override
